@@ -1,0 +1,70 @@
+/* You can still use the root for variables that you are not going to change*/
+:root{
+  --yellow-color:   #ffc107;
+  --red-color:      #dc3848;
+  --blue-color:     #007bff;
+}
+
+/* In this class put all the colors for the light color scheme */
+.is-light-mode{
+  --body-color:     #131212;
+  --light-color:    #f0f3f5;
+  --dark-color:     #343a40;
+
+}
+
+/* In this class put all the colors for the dark color scheme */
+.is-dark-mode{
+  --body-color:     #c5c0c0;
+  --light-color:    #2b343a;
+  --dark-color:     #f0f3f5;
+}
+
+
+
+/* This is just to give it a style but you can change it  */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+ background-color: var(--body-color);
+}
+
+.darkMode{
+  --var-size: 26px;
+  width:calc(var(--var-size) * 2.25);
+  height:var(--var-size);
+  border-radius:var(--var-size);
+  background-color:var(--light-color);
+  position:absolute;
+  top:10px;
+  right:10px;
+  cursor:pointer
+}
+
+.darkMode::after{
+  --var-new-size: calc(var(--var-size) - 6px);
+  content:'';
+  display:block;
+  width:var(--var-new-size);
+  height:var(--var-new-size);
+  border-radius:var(--var-new-size);
+  background-color:var(--dark-color);
+  position:absolute;
+  top:calc((var(--var-size) - var(--var-new-size)) / 2);
+  left:calc((var(--var-size) - var(--var-new-size)) / 2);
+  right:unset
+}
+  
+.darkMode.active{
+  background-color: var(--light-color)
+}
+
+.darkMode.active::after{
+  left:unset;
+  right:calc((var(--var-size) - var(--var-new-size)) / 2);
+  background-color: var(--dark-color)
+}
